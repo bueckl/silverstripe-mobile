@@ -88,7 +88,7 @@ class MobileBrowserDetector {
 			case(self::is_windows()):
 				$isMobile = true;
 				break;
-			case(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|vodafone|o2|pocket|kindle|mobile|pda|psp|treo)/i', $agent)):
+case(preg_match('/(up.browser|up.link|mmp|symbian|smartphone|midp|wap|vodafone|o2|pocket|kindle|mobile|pda|psp|treo)/i', $agent) && (stripos($_SERVER['HTTP_USER_AGENT'], 'ipad') === false)):
 				$isMobile = true;
 				break;
 			case((strpos($accept, 'text/vnd.wap.wml') !== false) || (strpos($accept, 'application/vnd.wap.xhtml+xml') !== false)):
@@ -109,6 +109,7 @@ class MobileBrowserDetector {
 
 		return $isMobile;
 	}
+
 
 	/**
 	 * Rough detection of "tablet" user agents, based on their user agent string.
